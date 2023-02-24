@@ -1,0 +1,19 @@
+import random
+k=random.getrandbits(128)
+m=random.getrandbits(128)
+kb=bin(k)[2:]
+mb=bin(m)[2:]
+kbl=kb[0:64]
+kbr=kb[64:]
+mbl=mb[0:64]
+mbr=mb[64:]
+a1=int(kbl,2)^int(mbr,2)
+a2=int(kbr,2)^int(mbl,2)
+a3=a1^a2
+a4=bin(a3)[2:].zfill(64)
+a5=a4[0:32]
+a6=a4[32:]
+a7=int(a5,2)^int(a6,2)
+print("128 Bit Key = ",kb)
+print("128 Random Bits Generated = ",mb)
+print("RES/SRES = ",bin(a7)[2:].zfill(len(a5)))
